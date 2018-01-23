@@ -1,0 +1,72 @@
+<div class="container">
+  <form class="form-horizontal" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+        <h2>Please Login</h2>
+        <h5>"manager" - "mangersecret"</h5>
+        <h5>"client" - "clientsecret"</h5>
+        <hr>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+        <div class="form-group has-danger">
+          <label class="sr-only" for="login">E-Mail Address</label>
+          <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+            <div class="input-group-addon" style="width: 2.6rem">
+              <i class="fa fa-at"></i>
+            </div>
+            <input type="text" class="form-control" id="login" formControlName="login" placeholder="you@example.com" required autofocus>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3" *ngIf="login.invalid && (login.dirty || login.touched)">
+        <div class="form-control-feedback" *ngIf="login.errors.required">
+          <span class="text-danger align-middle">
+            <i class="fa fa-close"></i> Login is required.
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="sr-only" for="password">Password</label>
+          <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+            <div class="input-group-addon" style="width: 2.6rem">
+              <i class="fa fa-key"></i>
+            </div>
+            <input formControlName="password" type="password" class="form-control" id="password" placeholder="Password" required>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3" *ngIf="password.invalid && (password.dirty || password.touched)">
+        <div class="form-control-feedback" *ngIf="password.errors.required">
+          <span class="text-danger align-middle">
+            <i class="fa fa-close"></i> Password is required.
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="row" style="padding-top: 1rem">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+        <button [disabled]="!form.valid" type="submit" class="btn btn-success">
+          <i class="fa fa-sign-in"></i> Login</button>
+      </div>
+    </div>
+    <div class="row" style="padding-top: 1rem" *ngIf="errorMessage">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+        <div class="form-control-feedback">
+          <span class="text-danger align-middle">
+            <i class="fa fa-close"></i> {{errorMessage}}
+          </span>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

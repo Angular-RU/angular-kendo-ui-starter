@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label class="center-block">{{'Page.Name' | translate}}
+            <input type="text" class="form-control" formControlName="name" required>
+          </label>
+          <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+            <div *ngIf="name.errors.required">
+                {{'Page.Errors.NameIsReq' | translate}}
+            </div>
+            <div *ngIf="name.errors.maxlength">
+                {{'Page.Errors.Max10' | translate}}
+              
+            </div>
+            <div *ngIf="name.errors.minlength">
+                {{'Page.Errors.Min3' | translate}}
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="center-block">{{'Page.Count' | translate}}
+            <input type="number" class="form-control" formControlName="count" required>
+          </label>
+          <div *ngIf="count.invalid && (count.dirty || count.touched)" class="alert alert-danger">
+            <div *ngIf="count.errors.required">
+                {{'Page.Errors.CountIsReq' | translate}}
+            </div>
+            <div *ngIf="count.errors.max">
+                {{'Page.Errors.Max15' | translate}}
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <p>{{'Page.Type' | translate}}</p>
+          <kendo-dropdownlist formControlName="type" [data]="types" [textField]="'name'" [valueField]="'id'" [valuePrimitive]="true"
+            required>
+          </kendo-dropdownlist>
+          <div *ngIf="type.invalid && (type.dirty || type.touched)" class="alert alert-danger">
+            <div *ngIf="type.errors.required">
+                {{'Page.Errors.TypeIsReq' | translate}}
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <p>{{'Page.Country' | translate}}</p>
+          <kendo-combobox formControlName="country" [data]="countries" [textField]="'name'" [valueField]="'id'" [valuePrimitive]="true"
+            required></kendo-combobox>
+          <div *ngIf="country.invalid && (country.dirty || country.touched)" class="alert alert-danger">
+            <div *ngIf="country.errors.required">
+                {{'Page.Errors.CountryIsReq' | translate}}
+            </div>
+
+          </div>
+        </div>
+
+        <div style="margin-bttom: 1em">
+          <button type="submit" [disabled]="!form.valid" class="btn btn-success"> {{'Page.Save' | translate}}</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

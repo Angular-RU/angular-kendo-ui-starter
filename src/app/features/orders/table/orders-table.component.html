@@ -1,0 +1,63 @@
+<kendo-grid #grid [kendoGridBinding]="items$ | async" [style.height.px]="912" [scrollable]="'scrollable'" [pageable]="{
+  buttonCount: 5,
+  info: true,
+  pageSizes: [2,5,10]
+}" [pageSize]="2" [sortable]="true" [filterable]="true">
+  <ng-template kendoGridToolbarTemplate>
+    <button kendoGridAddCommand [routerLink]="['/order', 0, 'details']">{{'Kendo.AddNew' | translate}}</button>
+  </ng-template>
+  <kendo-grid-column field="id" title="ID" width="40" [filterable]="false">
+  </kendo-grid-column>
+  <kendo-grid-column field="countryName" title="{{'Page.Country' | translate}}" width="250">
+    <ng-template kendoGridFilterCellTemplate let-filter>
+      <app-dropdown-filter [filter]="filter" [data]="countries" textField="name" valueField="id" fieldName="country">
+      </app-dropdown-filter>
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column field="createdDate" title="{{'Page.CreatedDate' | translate}}" width="250" format="{0:MM/dd/yyyy}" [filter]="'date'">
+    <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+      <kendo-grid-date-filter-cell [column]="column" [filter]="filter">
+        <kendo-filter-gte-operator text="{{'Kendo.Filters.DateGte' | translate}}"></kendo-filter-gte-operator>
+        <kendo-filter-gt-operator text="{{'Kendo.Filters.DateGt' | translate}}"></kendo-filter-gt-operator>
+        <kendo-filter-lt-operator text="{{'Kendo.Filters.DateLt' | translate}}"></kendo-filter-lt-operator>
+        <kendo-filter-lte-operator text="{{'Kendo.Filters.DateLte' | translate}}"></kendo-filter-lte-operator>
+      </kendo-grid-date-filter-cell>
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column field="typeName" title="{{'Page.Type' | translate}}">
+    <ng-template kendoGridFilterCellTemplate let-filter>
+      <app-dropdown-filter [filter]="filter" [data]="types" textField="name" valueField="id" fieldName="type">
+      </app-dropdown-filter>
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column field="name" title="{{'Page.Name' | translate}}">
+    <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+      <kendo-grid-string-filter-cell [column]="column" [filter]="filter" operator="startswith">
+        <kendo-filter-startswith-operator text="{{'Kendo.Filters.StartsWith' | translate}}"></kendo-filter-startswith-operator>
+        <kendo-filter-eq-operator text="{{'Kendo.Filters.Eq' | translate}}"></kendo-filter-eq-operator>
+      </kendo-grid-string-filter-cell>
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column field="linkToA" title="{{'Page.Details' | translate}}" [filterable]="false">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <a [routerLink]="['/order', dataItem.id, 'details']">{{'Page.ClickMe' | translate}}</a>
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column field="linkToB" title="{{'Page.Foo' | translate}}" [filterable]="false">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <a [routerLink]="['/order', dataItem.id, 'foo']">{{'Page.ClickMe' | translate}}</a>
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column field="count" title="{{'Page.Count' | translate}}">
+    <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+      <kendo-grid-numeric-filter-cell [column]="column" [filter]="filter">
+        <kendo-filter-gte-operator text="{{'Kendo.Filters.Gte' | translate}}"></kendo-filter-gte-operator>
+        <kendo-filter-gt-operator text="{{'Kendo.Filters.Gt' | translate}}"></kendo-filter-gt-operator>
+        <kendo-filter-eq-operator text="{{'Kendo.Filters.Eq' | translate}}"></kendo-filter-eq-operator>
+        <kendo-filter-neq-operator text="{{'Kendo.Filters.Neq' | translate}}"></kendo-filter-neq-operator>
+        <kendo-filter-lt-operator text="{{'Kendo.Filters.Lt' | translate}}"></kendo-filter-lt-operator>
+        <kendo-filter-lte-operator text="{{'Kendo.Filters.Lte' | translate}}"></kendo-filter-lte-operator>
+      </kendo-grid-numeric-filter-cell>
+    </ng-template>
+  </kendo-grid-column>
+</kendo-grid>

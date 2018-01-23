@@ -1,0 +1,39 @@
+<h2>{{title}}</h2>
+<kendo-grid #grid [kendoGridBinding]="items" [style.height.px]="866" [scrollable]="'scrollable'" [pageable]="{
+  buttonCount: 2,
+  info: true,
+  pageSizes: [2,5,10]
+}" [pageSize]="2" [sortable]="true" filterable="menu" (edit)="editHandler($event)" (cancel)="cancelHandler($event)" (save)="saveHandler($event)"
+  (remove)="removeHandler($event)" (add)="addHandler($event)">
+  <ng-template kendoGridToolbarTemplate>
+    <button kendoGridAddCommand>{{'Kendo.AddNew' | translate}}</button>
+  </ng-template>
+  <kendo-grid-column field="id" title="ID" width="40" [filterable]="false">
+  </kendo-grid-column>
+  <kendo-grid-column field="nameRu" title="{{'Kendo.Titles.NameRu' | translate}}" width="250" editor="text">
+    <ng-template kendoGridFilterMenuTemplate let-filter let-column="column" let-filterService="filterService">
+      <kendo-grid-string-filter-menu [column]="column" [filter]="filter" [filterService]="filterService" [extra]="false">
+        <kendo-filter-contains-operator></kendo-filter-contains-operator>
+        <kendo-filter-startswith-operator></kendo-filter-startswith-operator>
+        <kendo-filter-eq-operator></kendo-filter-eq-operator>
+      </kendo-grid-string-filter-menu>
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column field="nameEn" title="{{'Kendo.Titles.NameEn' | translate}}" width="250" editor="text">
+    <ng-template kendoGridFilterMenuTemplate let-filter let-column="column" let-filterService="filterService">
+      <kendo-grid-string-filter-menu [column]="column" [filter]="filter" [filterService]="filterService" [extra]="false">
+        <kendo-filter-contains-operator></kendo-filter-contains-operator>
+        <kendo-filter-startswith-operator></kendo-filter-startswith-operator>
+        <kendo-filter-eq-operator></kendo-filter-eq-operator>
+      </kendo-grid-string-filter-menu>
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-command-column width="150">
+    <ng-template kendoGridCellTemplate let-isNew="isNew">
+      <button kendoGridEditCommand class="k-primary">{{'Kendo.Edit' | translate}}</button>
+      <button kendoGridRemoveCommand>{{'Kendo.Remove' | translate}}</button>
+      <button kendoGridSaveCommand>{{ (isNew ? 'Kendo.AddNew' : 'Kendo.Update') | translate }}</button>
+      <button kendoGridCancelCommand>{{ 'Kendo.Cancel' | translate}}</button>
+    </ng-template>
+  </kendo-grid-command-column>
+</kendo-grid>

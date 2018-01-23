@@ -1,0 +1,12 @@
+<ngb-tabset [activeId]="activeTab" (tabChange)="beforeChange($event)" [destroyOnHide]="false">
+  <ngb-tab id="details" title="{{'Page.Details' | translate}}">
+    <ng-template ngbTabContent>
+      <app-order-details [orderId]="orderId"></app-order-details>
+    </ng-template>
+  </ngb-tab>
+  <ngb-tab id="foo" title="{{'Page.Foo' | translate}}">
+    <ng-template ngbTabContent>
+      <app-order-foo></app-order-foo>
+    </ng-template>
+  </ngb-tab>
+</ngb-tabset>

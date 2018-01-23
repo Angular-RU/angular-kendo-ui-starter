@@ -1,0 +1,66 @@
+{
+  "Menu": {
+    "Login": "Login",
+    "Orders": "Orders",
+    "Users": "Users",
+    "Clients": "Clients",
+    "Managers": "Managers",
+    "References": "References",
+    "Countries": "Countries",
+    "Types": "Types",
+    "Logout": "Logout"
+  },
+  "Page": {
+    "Details": "Details",
+    "Foo": "Foo",
+    "Name": "Name",
+    "Count": "Count",
+    "Type": "Type",
+    "Country": "Country",
+    "Save": "Save",
+    "CreatedDate": "Creation date",
+    "ClickMe": "Click",
+    "Errors": {
+      "NameIsReq": "Name is required.",
+      "Max10": "No more 10.",
+      "Min3": "No less then 3.",
+      "CountIsReq": "Count is required.",
+      "Max15": "No more 15.",
+      "TypeIsReq": "Type is required.",
+      "CountryIsReq": "Country is required."
+    }
+  },
+  "Kendo": {
+    "Titles": {
+      "NameRu": "Name Ru",
+      "NameEn": "Name En"
+    },
+    "Filters": {
+      "Apply": "Apply",
+      "Clear": "Clear",
+      "Contains": "Contains",
+      "DateGt": "Is after",
+      "DateGte": "Is after or equal to",
+      "DateLt": "Is before",
+      "DateLte": "Is before or equal to",
+      "Eq": "Is equal to",
+      "Gt": "Greater than",
+      "Gte": "Greater than or equal to",
+      "IsEmpty": "Empty",
+      "IsNotNull": "Is not null",
+      "IsNull": "Is null",
+      "Lt": "Less than",
+      "Lte": "Less than or equal to",
+      "Neq": "Is not equal to",
+      "NotContains": "Doesn't contain",
+      "StartsWith": "Starts with"
+    },
+    "FilterDefaultText": "Select item...",
+    "AddNew": "Add new",
+    "Edit": "Edit",
+    "Remove": "Remove",
+    "Update": "Update",
+    "Discard": "Discard",
+    "Cancel": "Cancel"
+  }
+}
